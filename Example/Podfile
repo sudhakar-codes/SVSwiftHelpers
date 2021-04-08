@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'SVSwiftHelpers_Example' do
+  pod 'SVSwiftHelpers', :path => '../'
+
+  target 'SVSwiftHelpers_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
