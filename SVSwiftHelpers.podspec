@@ -21,16 +21,18 @@ Pod::Spec.new do |s|
 'SVSwiftHelpers has collection of multiple extensions. Just import'
                        DESC
 
-  s.homepage         = 'https://github.com/sudhakar/SVSwiftHelpers'
+  s.homepage         = 'https://github.com/sudhakar-varma/SVSwiftHelpers'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'sudhakar' => 'sudhakarvarma.ios@gmail.com' }
-  s.source           = { :git => 'https://github.com/sudhakar/SVSwiftHelpers.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/sudhakar-varma/SVSwiftHelpers.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.0'
 
   s.source_files = 'Classes/**/*'
+  
+  s.swift_version = '5.0'
   
   # s.resource_bundles = {
   #   'SVSwiftHelpers' => ['SVSwiftHelpers/Assets/*.png']
