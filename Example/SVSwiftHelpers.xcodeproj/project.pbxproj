@@ -28,10 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1728A65149E8F506B203944E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1728A65149E8F506B203944E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		229FE69C55AE9088B8245926 /* Pods-SVSwiftHelpers_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVSwiftHelpers_Example.release.xcconfig"; path = "Target Support Files/Pods-SVSwiftHelpers_Example/Pods-SVSwiftHelpers_Example.release.xcconfig"; sourceTree = "<group>"; };
-		4631475859CB0392AACEDB32 /* SVSwiftHelpers.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SVSwiftHelpers.podspec; path = ../SVSwiftHelpers.podspec; sourceTree = "<group>"; };
-		593620A0190453DBF06B65E0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		4631475859CB0392AACEDB32 /* SVSwiftHelpers.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SVSwiftHelpers.podspec; path = ../SVSwiftHelpers.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		593620A0190453DBF06B65E0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SVSwiftHelpers_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVSwiftHelpers_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +77,6 @@
 				9AC2BE85017FCF991217C14F /* Pods-SVSwiftHelpers_Tests.debug.xcconfig */,
 				FCED6077F63B8D3A50752951 /* Pods-SVSwiftHelpers_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

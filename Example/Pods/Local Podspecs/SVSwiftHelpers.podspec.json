@@ -1,0 +1,22 @@
+{
+  "name": "SVSwiftHelpers",
+  "version": "0.1.0",
+  "summary": "A short description of SVSwiftHelpers.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/sudhakar/SVSwiftHelpers",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "sudhakar": "sudhakarvarma.ios@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/sudhakar/SVSwiftHelpers.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "SVSwiftHelpers/Classes/**/*"
+}

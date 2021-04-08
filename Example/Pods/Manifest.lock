@@ -1,0 +1,16 @@
+PODS:
+  - SVSwiftHelpers (0.1.0)
+
+DEPENDENCIES:
+  - SVSwiftHelpers (from `../`)
+
+EXTERNAL SOURCES:
+  SVSwiftHelpers:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SVSwiftHelpers: 02e0d8e3487e834a36ad17af427b5868da3ee9ae
+
+PODFILE CHECKSUM: de65e6f32bb82ba9d9fc3002c2dbf7fbedf947b9
+
+COCOAPODS: 1.10.1
