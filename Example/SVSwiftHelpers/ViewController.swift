@@ -19,7 +19,11 @@ class ViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        showAlert("Title","Alert message", "OK")
+        //showAlert("Title","Alert message", "OK")
+        
+        //openSFSafariVC(WithURL: "http://www.google.com", barTint: .green)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

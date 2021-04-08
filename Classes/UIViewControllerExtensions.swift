@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import SafariServices
 
 extension UIViewController {
     
@@ -32,6 +32,16 @@ extension UIViewController {
     public func action(_ title: String, preferredStyle:UIAlertAction.Style, action:@escaping (_ alertAction: UIAlertAction) -> Void) -> UIAlertAction{
         let btnAction = UIAlertAction(title: title, style:preferredStyle, handler:action)
         return btnAction
-    } 
+    }
+    
+    public func openSFSafariVC(WithURL url:String?, barTint colour:UIColor?) {
+        
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = true
+        let vc = SFSafariViewController(url: NSURL(string: url ?? "")! as URL, configuration: config)
+        vc.preferredBarTintColor = colour
+        vc.preferredControlTintColor = UIColor.white
+        self.present(vc, animated: true)
+    }
 }
 
