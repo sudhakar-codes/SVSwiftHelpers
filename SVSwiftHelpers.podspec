@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SVSwiftHelpers'
-  s.version          = '1.0'
+  s.version          = '1.1'
   s.summary          = 'SVSwiftHelpers has collection of multiple extensions'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-'SVSwiftHelpers has collection of multiple extensions. Just import'
+'SVSwiftHelpers has collection of multiple extensions and helpers. Just import and start using'
                        DESC
 
   s.homepage         = 'https://github.com/sudhakar-varma/SVSwiftHelpers'
@@ -26,11 +26,15 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'sudhakar' => 'sudhakarvarma.ios@gmail.com' }
   s.source           = { :git => 'https://github.com/sudhakar-varma/SVSwiftHelpers.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/sudhakarVarmaD'
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'Sources/**/*'
+  
+  #s.subspec 'Extensions' do |extensions|
+  #    extensions.source_files = 'Sources/Extensions/**/*.swift'
+  #end
   
   s.swift_version = '5.0'
   

@@ -15,6 +15,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		7224C449261F3F450055B6B3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7224C448261F3F450055B6B3 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		607FACE51AFB9204008FA782 /* SVSwiftHelpers_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVSwiftHelpers_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		7224C448261F3F450055B6B3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		8A7A09F6423E5682D0138B00 /* Pods_SVSwiftHelpers_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVSwiftHelpers_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC2BE85017FCF991217C14F /* Pods-SVSwiftHelpers_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVSwiftHelpers_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SVSwiftHelpers_Tests/Pods-SVSwiftHelpers_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D28FAB240C1F69648CF0096E /* Pods-SVSwiftHelpers_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVSwiftHelpers_Example.debug.xcconfig"; path = "Target Support Files/Pods-SVSwiftHelpers_Example/Pods-SVSwiftHelpers_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				7224C448261F3F450055B6B3 /* DetailView.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -331,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				7224C449261F3F450055B6B3 /* DetailView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

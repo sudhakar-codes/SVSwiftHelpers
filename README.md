@@ -1,6 +1,5 @@
 # SVSwiftHelpers
 
-[![CI Status](https://img.shields.io/travis/sudhakar/SVSwiftHelpers.svg?style=flat)](https://travis-ci.org/sudhakar/SVSwiftHelpers)
 [![Version](https://img.shields.io/cocoapods/v/SVSwiftHelpers.svg?style=flat)](https://cocoapods.org/pods/SVSwiftHelpers)
 [![License](https://img.shields.io/cocoapods/l/SVSwiftHelpers.svg?style=flat)](https://cocoapods.org/pods/SVSwiftHelpers)
 [![Platform](https://img.shields.io/cocoapods/p/SVSwiftHelpers.svg?style=flat)](https://cocoapods.org/pods/SVSwiftHelpers)
