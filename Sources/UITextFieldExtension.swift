@@ -60,9 +60,9 @@ public extension UITextField {
     /// Password toggle
     fileprivate func setPasswordToggleImage(_ button: UIButton) {
         if(isSecureTextEntry){
-            button.setImage(UIImage(named: "ic_visibility")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.setImage(UIImage(named: "ic_visibility", in: Bundle(identifier: "org.cocoapods.SVSwiftHelpers"), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate), for: .normal)
         }else{
-            button.setImage(UIImage(named: "ic_visibility_off")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.setImage(UIImage(named: "ic_visibility_off", in: Bundle(identifier: "org.cocoapods.SVSwiftHelpers"), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate), for: .normal)
         }
     }
     
