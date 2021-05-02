@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textFieldExtensionExample()
     }
     
     //MARK:- Colour
@@ -225,11 +224,11 @@ class ViewController: UIViewController {
         let textField = UITextField(x: 10, y: 150, w: 100, h: 44, fontSize: 16)
         textField.borderStyle = .roundedRect
         self.view.addSubview(textField)
-//
-//        textField.addLeftTextPadding(5.0)
-//        textField.addLeftIcon(nil, frame: CGRect(x: 10, y: 10, width: 10, height: 10), imageSize: CGSize(width: 10, height: 10))
-//        textField.addRightIcon(nil, frame: CGRect(x: 10, y: 10, width: 10, height: 10), imageSize: CGSize(width: 10, height: 10))
-//
+
+        textField.addLeftTextPadding(5.0)
+        textField.addLeftIcon(nil, frame: CGRect(x: 10, y: 10, width: 10, height: 10), imageSize: CGSize(width: 10, height: 10))
+        textField.addRightIcon(nil, frame: CGRect(x: 10, y: 10, width: 10, height: 10), imageSize: CGSize(width: 10, height: 10))
+
         textField.enablePasswordToggle()
         
     }

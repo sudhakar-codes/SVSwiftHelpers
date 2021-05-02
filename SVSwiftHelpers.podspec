@@ -30,11 +30,8 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'Sources/**/*'
-  
-  #s.subspec 'Extensions' do |extensions|
-  #    extensions.source_files = 'Sources/Extensions/**/*.swift'
-  #end
+  s.source_files = 'Sources/**/*.{swift, plist}'
+  s.resources = 'Sources/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,json}'
   
   s.swift_version = '5.0'
   
