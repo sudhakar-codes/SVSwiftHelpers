@@ -10,12 +10,12 @@ import UIKit
 import SVSwiftHelpers
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-   
+    
     //MARK:- Colour
     func colorExtensionExample() {
         
@@ -37,12 +37,12 @@ class ViewController: UIViewController {
                                         print("Cicked OK")
                                     }),
                                    action("Cancel", preferredStyle: .cancel, action: { (action) in
-                                       print("Cicked Cancel")
+                                    print("Cicked Cancel")
                                    }),
                                    action("Delete", preferredStyle: .destructive, action: { (action) in
-                                       print("Cicked delete")
+                                    print("Cicked delete")
                                    })
-                                   )
+        )
         
         /// Navigation bar
         self.navigationItem.leftBarButtonItem = leftBarButton
@@ -70,14 +70,14 @@ class ViewController: UIViewController {
         /// can Show at any point in view
         startActivityIndicator(CGPoint(x: 10, y: 10))
         stopActivityIndicator()
-
+        
         /// Open Safari
         openSFSafariVC(WithURL: "http://www.google.com")
         openSFSafariVC(WithURL: "http://www.google.com", barTint: .green)
     }
     
     //MARK:- String
-    func stringExtensionExamnple()  {
+    func stringExtensionExample()  {
         
         print("sudhakar".base64)
         print("sudhakar".length)
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
     }
     
     //MARK:- Date
-    func dateExtensionExamnple() {
+    func dateExtensionExample() {
         
         let stringToDate = Date(fromString: "10-11-2020")
         print(stringToDate ?? Date())
@@ -165,6 +165,7 @@ class ViewController: UIViewController {
         
     }
     
+    //MARK:- App
     func appHelperExample()  {
         
         /// Get all your app details
@@ -175,7 +176,92 @@ class ViewController: UIViewController {
         print(App.systemVersion ?? "")
     }
     
-
-
+    //MARK:- UIView
+    func viewExtensionExample()  {
+        
+        let sampleView = UIView(x: 1, y: 1, w: 1, h: 1)
+        
+        sampleView.addSubviews([UIView(),UIView()])
+        
+        print(sampleView.x) // get
+        sampleView.x = 10 // set
+        
+        sampleView.roundView()
+        sampleView.roundCorners([UIRectCorner.topLeft, UIRectCorner.topRight], radius: 1.0)
+        
+        sampleView.setCornerRadius(radius: 3.0)
+        sampleView.addShadow(offset: CGSize(width: 0, height: 1.0), radius: 1.0, color: .black, opacity: 1.0)
+        sampleView.addBorder(width: 1.0, color: .red)
+        sampleView.drawCircle(fillColor: .white, strokeColor: .red, strokeWidth: 0.5)
+        sampleView.drawStroke(width: 1.0, color: .red)
+        
+    }
+    
+    //MARK:- UserDefaults
+    func userdefaultsExtensionExample() {
+        
+        //setter
+        UserDefaults.standard["sudhakar"]  = "name"
+        
+        // Getter
+        let name = UserDefaults.standard["name"]
+        print(name!)
+        
+        if UserDefaults.standard.valueExists(forKey: "name") {
+            print("value exits")
+        }
+        
+        UserDefaults.standard.archive(object: [:], forKey: "data")
+        
+        print(UserDefaults.standard.unarchivedObject(forKey: "data") as? [String:Any] ?? [:])
+        
+    }
+    
+    //MARK:- UITextField
+    
+    func textFieldExtensionExample()  {
+        
+        let textField = UITextField(x: 0, y: 0, w: 100, h: 44)
+        
+        textField.addLeftTextPadding(5.0)
+        textField.addLeftIcon(nil, frame: CGRect(x: 10, y: 10, width: 10, height: 10), imageSize: CGSize(width: 10, height: 10))
+        textField.addRightIcon(nil, frame: CGRect(x: 10, y: 10, width: 10, height: 10), imageSize: CGSize(width: 10, height: 10))
+        
+        textField.enablePasswordToggle()
+        
+    }
+    
+    //MARK:- UILabel
+    func labelExtensionExample() {
+        
+        let label = UILabel(x: 0, y: 0, w: 100, h: 200)
+        
+        label.set(image: UIImage(named: "image")!, with: "Hello world")
+    }
+    
+    //MARK:- UIImageView
+    func imageViewExtensionExample() {
+        
+        let imageView = UIImageView(x: 0, y: 0, w: 120, h: 100)
+        
+        imageView.image = imageView.changeImageColor(color: .red)
+    }
+    
+    //MARK:- UIFont
+    
+    func fontExtensionExample() {
+        
+        let font = UIFont.Font(name: .Helvetica, type: .Light, size: 14)
+        print(font)
+        
+        let customFont = UIFont.customFont(name: "fontname", type: .Light, size: 12)
+        print(customFont)
+        
+        print(UIFont.openSansFontLight(ofSize: 14))
+        print(UIFont.openSansFontRegular(ofSize: 14))
+        print(UIFont.openSansFontSemiBold(ofSize: 14))
+        print(UIFont.openSansFontBold(ofSize: 14))
+    }
+    
 }
 

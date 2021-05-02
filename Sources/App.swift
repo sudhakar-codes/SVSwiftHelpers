@@ -29,7 +29,13 @@ public struct App {
 
     /// Get the name of the currently running application
     public static var name: String? {
-        return getFromInfo(key: "CFBundleDisplayName")
+        
+        if let bundleDisplayName = getFromInfo(key: "CFBundleDisplayName") {
+            return bundleDisplayName
+        } else if let bundleName = getFromInfo(key: "CFBundleName") {
+            return bundleName
+        }
+        return nil
     }
 
     /// Get the version of the currently running application
@@ -49,6 +55,28 @@ public struct App {
         }
     }
     
+    /// EZSE: Return app's build number
+    public static var appBuild: String? {
+        return getFromInfo(key: kCFBundleVersionKey as String)
+    }
+
+    /// EZSE: Return app's bundle ID
+    public static var appBundleID: String? {
+        return Bundle.main.bundleIdentifier
+    }
+
+    /// EZSE: Returns both app's version and build numbers "v0.3(7)"
+    public static var appVersionAndBuild: String? {
+        if version != nil && appBuild != nil {
+            if version == appBuild {
+                return "v\(version!)"
+            } else {
+                return "v\(version!)(\(appBuild!))"
+            }
+        }
+        return nil
+    }
+    
     /**
      Get info from the bundle's plist for a specific key
      - Parameter key: The key to look up
@@ -66,6 +94,20 @@ public struct App {
     /// Get the systemVersion of the currently running application
     public static var systemVersion: String? {
         return UIDevice.current.systemVersion
+    }
+    ///  Returns the locale country code. An example value might be "ES". //TODO: Add to readme
+    public static var currentRegion: String? {
+        return (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String
+    }
+    
+    /// Submits a block for asynchronous execution on the main queue
+    public static func runThisInMainThread(_ block: @escaping () -> Void) {
+        DispatchQueue.main.async(execute: block)
+    }
+
+    /// Runs in Default priority queue
+    public static func runThisInBackground(_ block: @escaping () -> Void) {
+        DispatchQueue.global(qos: .default).async(execute: block)
     }
 }
 
