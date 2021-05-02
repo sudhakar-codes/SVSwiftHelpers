@@ -9,6 +9,8 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+* iOS 11.0+
+* Xcode 10.0+
 
 ## Installation
 
@@ -18,6 +20,9 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'SVSwiftHelpers'
 ```
+## [Examples](https://github.com/sudhakar-varma/SVSwiftHelpers/blob/master/Example/SVSwiftHelpers/ViewController.swift)
+
+
 
 ## Author
 
