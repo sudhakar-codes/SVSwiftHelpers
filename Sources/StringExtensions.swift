@@ -217,7 +217,7 @@ public extension String {
     
 }
 
-extension CharacterSet {
+public extension CharacterSet {
     static let urlAllowed = CharacterSet.urlFragmentAllowed
         .union(.urlHostAllowed)
         .union(.urlPasswordAllowed)

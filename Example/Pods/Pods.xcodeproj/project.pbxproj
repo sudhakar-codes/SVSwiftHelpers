@@ -16,6 +16,11 @@
 		7224C46F261F57920055B6B3 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7224C46E261F57920055B6B3 /* App.swift */; };
 		7224C476261F624D0055B6B3 /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7224C475261F624D0055B6B3 /* ColourExtension.swift */; };
 		7246EB0A2629A1E200003B5F /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246EB092629A1E200003B5F /* SynchronizedDictionary.swift */; };
+		72781BFE2644175E00312BF0 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72781BFD2644175E00312BF0 /* UITableViewExtension.swift */; };
+		72781C002644193D00312BF0 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72781BFF2644193D00312BF0 /* UICollectionViewExtension.swift */; };
+		72781C022644232E00312BF0 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72781C012644232D00312BF0 /* UISearchBarExtension.swift */; };
+		72781C042644268400312BF0 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72781C032644268400312BF0 /* UIApplicationExtension.swift */; };
+		72781C0626442DC200312BF0 /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72781C0526442DC200312BF0 /* CLLocationExtension.swift */; };
 		72829EA1263E6FAA0027ACBF /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72829EA0263E6FAA0027ACBF /* UITextFieldExtension.swift */; };
 		72829EA3263E739D0027ACBF /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72829EA2263E739D0027ACBF /* UILabelExtension.swift */; };
 		72829EA5263E75CB0027ACBF /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72829EA4263E75CB0027ACBF /* UIImageViewExtension.swift */; };
@@ -70,6 +75,11 @@
 		7224C46E261F57920055B6B3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		7224C475261F624D0055B6B3 /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
 		7246EB092629A1E200003B5F /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
+		72781BFD2644175E00312BF0 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		72781BFF2644193D00312BF0 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		72781C012644232D00312BF0 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
+		72781C032644268400312BF0 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		72781C0526442DC200312BF0 /* CLLocationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
 		72829EA0263E6FAA0027ACBF /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		72829EA2263E739D0027ACBF /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		72829EA4263E75CB0027ACBF /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -242,6 +252,11 @@
 				72829EAA263E85200027ACBF /* UserDefaultsExtension.swift */,
 				72829EAE263E94C90027ACBF /* TimerExtension.swift */,
 				72829EB0263E95750027ACBF /* IntExtension.swift */,
+				72781BFD2644175E00312BF0 /* UITableViewExtension.swift */,
+				72781BFF2644193D00312BF0 /* UICollectionViewExtension.swift */,
+				72781C012644232D00312BF0 /* UISearchBarExtension.swift */,
+				72781C032644268400312BF0 /* UIApplicationExtension.swift */,
+				72781C0526442DC200312BF0 /* CLLocationExtension.swift */,
 				7224C45A261F44BD0055B6B3 /* Media.xcassets */,
 			);
 			path = Sources;
@@ -444,16 +459,21 @@
 			files = (
 				72B916CE261F205500BF0980 /* StringExtensions.swift in Sources */,
 				72829EA1263E6FAA0027ACBF /* UITextFieldExtension.swift in Sources */,
+				72781C042644268400312BF0 /* UIApplicationExtension.swift in Sources */,
 				72829EAF263E94C90027ACBF /* TimerExtension.swift in Sources */,
 				72829EA3263E739D0027ACBF /* UILabelExtension.swift in Sources */,
+				72781C002644193D00312BF0 /* UICollectionViewExtension.swift in Sources */,
 				7246EB0A2629A1E200003B5F /* SynchronizedDictionary.swift in Sources */,
 				72829EB1263E95750027ACBF /* IntExtension.swift in Sources */,
 				721A583C263BFC0900B559D4 /* UIViewExtensions.swift in Sources */,
+				72781C022644232E00312BF0 /* UISearchBarExtension.swift in Sources */,
 				728C0A762620738300F39847 /* DateExtension.swift in Sources */,
+				72781BFE2644175E00312BF0 /* UITableViewExtension.swift in Sources */,
 				72829EA5263E75CB0027ACBF /* UIImageViewExtension.swift in Sources */,
 				7224C476261F624D0055B6B3 /* ColourExtension.swift in Sources */,
 				72829EA9263E81ED0027ACBF /* UIButtonExtension.swift in Sources */,
 				7224C46F261F57920055B6B3 /* App.swift in Sources */,
+				72781C0626442DC200312BF0 /* CLLocationExtension.swift in Sources */,
 				72B916D6261F20C800BF0980 /* UIViewControllerExtensions.swift in Sources */,
 				72829EA7263E7A080027ACBF /* UIFontExtension.swift in Sources */,
 				72829EAB263E85200027ACBF /* UserDefaultsExtension.swift in Sources */,
