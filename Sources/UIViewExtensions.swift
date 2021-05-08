@@ -318,7 +318,7 @@ public extension UIView {
     ///
     func setCornerRadius(radius: CGFloat) {
         self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
+        //self.layer.masksToBounds = true
     }
     ///
     func addShadow(offset: CGSize, radius: CGFloat, color: UIColor, opacity: Float, cornerRadius: CGFloat? = nil) {
@@ -469,12 +469,11 @@ extension UIView {
 
 public extension UIView {
     
-    ///  [UIRectCorner.TopLeft, UIRectCorner.TopRight]
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
+    /// [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner,  .layerMaxXMaxYCorner]
+    func roundCorners(_ corners: CACornerMask, radius: CGFloat) {
+        
+        layer.cornerRadius = radius
+        layer.maskedCorners = corners
     }
     
     /// Mask square/rectangle UIView with a circular/capsule cover, with a border of desired color and width around it
@@ -482,6 +481,7 @@ public extension UIView {
         self.setCornerRadius(radius: min(self.frame.size.height, self.frame.size.width) / 2)
         self.layer.borderWidth = width ?? 0
         self.layer.borderColor = color?.cgColor ?? UIColor.clear.cgColor
+        self.clipsToBounds = true
     }
     
     /// Remove all masking around UIView

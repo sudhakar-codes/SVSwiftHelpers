@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Add only available fonts types to project
 public enum CustomFontType :String {
     
     case Light      = "Light"
@@ -88,36 +89,5 @@ public extension UIFont {
         }
         return font
     }
-    
-    /// Custom font in Library is `OpenSans`
-    /// - Warning:Add `OpenSans` Font to your project
-    /// - Parameter size: size of font
-    /// - Returns: openSans `Light` font size
-    static func openSansFontLight(ofSize size: CGFloat) -> UIFont {
-        return customFont(name: "OpenSans", type: .Light, size: size)
-    }
-    
-    /// Custom font in Library is `OpenSans`
-    /// - Warning:Add `OpenSans` Font to your project
-    /// - Parameter size: size of font
-    /// - Returns: openSans `Regular` font size
-    static func openSansFontRegular(ofSize size: CGFloat) -> UIFont {
-        return customFont(name: "OpenSans", type: .Regular, size: size)
-    }
-    
-    /// Custom font in Library is `OpenSans`
-    /// - Warning:Add `OpenSans` Font to your project
-    /// - Parameter size: size of font
-    /// - Returns: openSans `SemiBold` font size
-    static func openSansFontSemiBold(ofSize size: CGFloat) -> UIFont {
-        return customFont(name: "OpenSans", type: .SemiBold, size: size)
-    }
-    
-    /// Custom font in Library is `OpenSans`
-    /// - Warning:Add `OpenSans` Font to your project
-    /// - Parameter size: size of font
-    /// - Returns: openSans `Bold` font size
-    static func openSansFontBold(ofSize size: CGFloat) -> UIFont {
-        return customFont(name: "OpenSans", type: .Bold, size: size)
-    }
+
 }
