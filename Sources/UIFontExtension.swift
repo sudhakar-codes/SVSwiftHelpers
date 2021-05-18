@@ -12,6 +12,7 @@ public enum CustomFontType :String {
     
     case Light      = "Light"
     case Regular    = "Regular"
+    case Medium     = "Medium"
     case SemiBold   = "SemiBold"
     case Bold       = "Bold"
 }

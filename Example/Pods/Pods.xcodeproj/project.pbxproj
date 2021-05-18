@@ -11,6 +11,7 @@
 		64EF8EB5A0523E2798DE131F6B2616F4 /* Pods-SVSwiftHelpers_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 592DBBCF7D5F73D5A37D48844CA361B2 /* Pods-SVSwiftHelpers_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A2BE1BD1AB1797CA6F5FC175CC10818 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		6C9E3B97C7ADEB6098242A35A6475552 /* Pods-SVSwiftHelpers_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E1278E2354B316FA08EB7905BCD33364 /* Pods-SVSwiftHelpers_Example-dummy.m */; };
+		721359C62653CD3D0015C7CF /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721359C52653CD3D0015C7CF /* ArrayExtensions.swift */; };
 		721A583C263BFC0900B559D4 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A583B263BFC0900B559D4 /* UIViewExtensions.swift */; };
 		7224C45B261F44BD0055B6B3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7224C45A261F44BD0055B6B3 /* Media.xcassets */; };
 		7224C46F261F57920055B6B3 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7224C46E261F57920055B6B3 /* App.swift */; };
@@ -70,6 +71,7 @@
 		63B31739F17AF529C36DD86C260B35BA /* SVSwiftHelpers.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SVSwiftHelpers.modulemap; sourceTree = "<group>"; };
 		6D311C096E45E273ADF732B4A35571FD /* SVSwiftHelpers.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SVSwiftHelpers.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71F7D1D054499BCC1FA8B0620AD1BB33 /* SVSwiftHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVSwiftHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		721359C52653CD3D0015C7CF /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		721A583B263BFC0900B559D4 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		7224C45A261F44BD0055B6B3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		7224C46E261F57920055B6B3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		72B916EA261F2B9E00BF0980 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				721359C52653CD3D0015C7CF /* ArrayExtensions.swift */,
 				7224C46E261F57920055B6B3 /* App.swift */,
 				72B916CD261F205500BF0980 /* StringExtensions.swift */,
 				72B916D5261F20C800BF0980 /* UIViewControllerExtensions.swift */,
@@ -462,6 +465,7 @@
 				72781C042644268400312BF0 /* UIApplicationExtension.swift in Sources */,
 				72829EAF263E94C90027ACBF /* TimerExtension.swift in Sources */,
 				72829EA3263E739D0027ACBF /* UILabelExtension.swift in Sources */,
+				721359C62653CD3D0015C7CF /* ArrayExtensions.swift in Sources */,
 				72781C002644193D00312BF0 /* UICollectionViewExtension.swift in Sources */,
 				7246EB0A2629A1E200003B5F /* SynchronizedDictionary.swift in Sources */,
 				72829EB1263E95750027ACBF /* IntExtension.swift in Sources */,

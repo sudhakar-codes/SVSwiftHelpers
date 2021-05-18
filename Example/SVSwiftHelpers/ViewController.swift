@@ -51,10 +51,10 @@ class ViewController: UIViewController {
         print(navigationBarHeight)
         
         /// Can use in any view controller
-        navigationTitleView(withTitle: "Title")
+        navigationTitleView(withTitle: "Title",titleFont: UIFont.systemFont(ofSize: 14))
         navigationTitleView(withTitle: "Title",textColor: .blue)
         navigationTitleView(withTitle: "Title", subTitle: "Sub Title")
-        navigationTitleView(withTitle: "Title", subTitle: "Sub Title",textColor :.red)
+        navigationTitleView(withTitle: "Title", subTitle: "Sub Title",textColor :.red,titleFont: UIFont.systemFont(ofSize: 14))
         
         /// Set navigation bar colour
         navigationBarColor = .randomColour
@@ -187,7 +187,7 @@ class ViewController: UIViewController {
         sampleView.x = 10 // set
         
         sampleView.roundView()
-        sampleView.roundCorners([UIRectCorner.topLeft, UIRectCorner.topRight], radius: 1.0)
+        sampleView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner,  .layerMaxXMaxYCorner], radius: 1.0)
         
         sampleView.setCornerRadius(radius: 3.0)
         sampleView.addShadow(offset: CGSize(width: 0, height: 1.0), radius: 1.0, color: .black, opacity: 1.0)
@@ -258,11 +258,6 @@ class ViewController: UIViewController {
         
         let customFont = UIFont.customFont(name: "fontname", type: .Light, size: 12)
         print(customFont)
-        
-        print(UIFont.openSansFontLight(ofSize: 14))
-        print(UIFont.openSansFontRegular(ofSize: 14))
-        print(UIFont.openSansFontSemiBold(ofSize: 14))
-        print(UIFont.openSansFontBold(ofSize: 14))
     }
     
 }

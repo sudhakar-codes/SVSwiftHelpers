@@ -38,7 +38,7 @@ public extension UIViewController {
     
     /// Adds left bar button
     var leftBarButton:UIBarButtonItem {
-        let barButton = UIBarButtonItem(image: UIImage(named: "icons8-back-60.png", in: Bundle(identifier: "org.cocoapods.SVSwiftHelpers"), compatibleWith: nil)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(leftBarButtonAction))
+        let barButton = UIBarButtonItem(image: UIImage(named: "round_arrow_back_ios_white_24pt", in: Bundle(identifier: "org.cocoapods.SVSwiftHelpers"), compatibleWith: nil)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(leftBarButtonAction))
         return barButton
     }
     @objc func leftBarButtonAction() {
@@ -86,23 +86,24 @@ public extension UIViewController {
     ///   - title: Dynamic title
     ///   - subTitle: Dynamic sub title
     ///   - textColor: default text color is white, but this can be overridden.
-    func navigationTitleView(withTitle title: String?, subTitle: String?, textColor:UIColor = .white){
+    ///   - titleFont: default font system bold 16, but this can be overridden.
+    func navigationTitleView(withTitle title: String?, subTitle: String?, textColor:UIColor = .white, titleFont:UIFont = UIFont.boldSystemFont(ofSize: 16)){
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: -5, width: 250, height: 20))
         titleLabel.backgroundColor = UIColor.clear
-        titleLabel.textColor = textColor
-        titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        titleLabel.text = title
-        titleLabel.numberOfLines = 1
+        titleLabel.textColor       = textColor
+        titleLabel.textAlignment   = .left
+        titleLabel.font            = titleFont
+        titleLabel.text            = title
+        titleLabel.numberOfLines   = 1
         
         let subTitleLabel = UILabel(frame: CGRect(x: 0, y: 15, width: 240, height: 20))
         subTitleLabel.backgroundColor = UIColor.clear
-        subTitleLabel.textColor = textColor
-        subTitleLabel.font = UIFont.systemFont(ofSize: 10)
-        subTitleLabel.textAlignment = .left
-        subTitleLabel.text = subTitle
-        subTitleLabel.numberOfLines = 1
+        subTitleLabel.textColor       = textColor
+        subTitleLabel.font            = UIFont.systemFont(ofSize: 10)
+        subTitleLabel.textAlignment   = .left
+        subTitleLabel.text            = subTitle
+        subTitleLabel.numberOfLines   = 1
         
         let twoLineTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
         twoLineTitleView.addSubview(titleLabel)
@@ -114,14 +115,16 @@ public extension UIViewController {
     /// - Parameters:
     ///   - title: Dynamic text
     ///   - textColor: default text color is white, but this can be overridden.
-    func navigationTitleView(withTitle title: String?, textColor:UIColor = .white) {
+    ///   - titleFont: default font system bold 16, but this can be overridden.
+    func navigationTitleView(withTitle title: String?, textColor:UIColor = .white, titleFont:UIFont = UIFont.boldSystemFont(ofSize: 16)) {
         
         let navTitleLabel = UILabel(frame: CGRect(x: 0, y: 40, width: 320, height: 60))
         navTitleLabel.textAlignment = .left
-        navTitleLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        navTitleLabel.lineBreakMode = .byWordWrapping
         navTitleLabel.numberOfLines = 2
-        navTitleLabel.textColor = textColor
-        navTitleLabel.text = title
+        navTitleLabel.font          = titleFont
+        navTitleLabel.textColor     = textColor
+        navTitleLabel.text          = title
         self.navigationItem.titleView = navTitleLabel
     }
     
