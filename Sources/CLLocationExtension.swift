@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-extension CLLocation {
+public extension CLLocation {
     
     var isGPSIsAccurate:Bool {
         return self.horizontalAccuracy <= 30
@@ -17,7 +17,7 @@ extension CLLocation {
         return CLLocationCoordinate2D(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
     }
 }
-extension CLLocationCoordinate2D {
+public extension CLLocationCoordinate2D {
     
     func distance(to:CLLocationCoordinate2D) -> CLLocationDistance {
         let from = CLLocation(latitude: self.latitude, longitude: self.longitude)

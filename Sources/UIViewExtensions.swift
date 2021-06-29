@@ -326,6 +326,7 @@ public extension UIView {
         self.layer.shadowRadius = radius
         self.layer.shadowOpacity = opacity
         self.layer.shadowColor = color.cgColor
+        self.layer.masksToBounds = false
         if let r = cornerRadius {
             self.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: r).cgPath
         }

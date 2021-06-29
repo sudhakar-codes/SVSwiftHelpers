@@ -60,7 +60,7 @@ public extension UIButton {
     var image: UIImage? {
         get { return self.image(for: .normal) }
         set {
-            setImage(newValue?.withRenderingMode(.alwaysOriginal), for: .normal)
+            setImage(newValue, for: .normal)
         }
     }
     
