@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'SVSwiftHelpers'
 ```
-## [Examples](https://github.com/sudhakar-varma/SVSwiftHelpers/blob/master/Example/SVSwiftHelpers/ViewController.swift)
+### Find [Examples](https://github.com/sudhakar-varma/SVSwiftHelpers/blob/master/Example/SVSwiftHelpers/ViewController.swift) here
 
 
 

@@ -43,17 +43,17 @@ public extension UITextField {
         self.leftViewMode = UITextField.ViewMode.always
     }
     
-    /// Add a image icon on the left side of the textfield
+    /// Add a image icon on the right side of the textfield
     func addRightIcon(_ image: UIImage?, frame: CGRect, imageSize: CGSize) {
         
-        let leftView    = UIView()
-        leftView.frame  = frame
+        let rightView    = UIView()
+        rightView.frame  = frame
         let imgView     = UIImageView()
         imgView.frame   = CGRect(x: frame.width - 8 - imageSize.width, y: (frame.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
         imgView.image   = image
-        leftView.addSubview(imgView)
+        rightView.addSubview(imgView)
         
-        self.rightView  = leftView
+        self.rightView  = rightView
         self.rightViewMode = UITextField.ViewMode.always
     }
     
