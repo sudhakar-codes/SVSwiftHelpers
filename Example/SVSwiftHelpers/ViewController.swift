@@ -76,6 +76,18 @@ class ViewController: UIViewController {
         openSFSafariVC(WithURL: "http://www.google.com", barTint: .green)
     }
     
+    //MARK:- Array
+    func arrayExtensionExample() {
+        
+        let array = [1,2,3]
+        
+        print(array.get(at: 1) ?? "")
+        print(array.random() ?? "")
+        
+        print(array.repeated(count: 1))
+        
+    }
+    
     //MARK:- String
     func stringExtensionExample()  {
         

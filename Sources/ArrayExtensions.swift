@@ -16,6 +16,30 @@ public extension Array {
         }
         return removedElements
     }
+    /// Gets the object at the specified index, if it exists.
+    func get(at index: Int) -> Element? {
+        guard index >= 0 && index < count else { return nil }
+        return self[index]
+    }
+    /// Returns a random element from the array.
+    func random() -> Element? {
+        guard count > 0 else { return nil }
+        let index = Int(arc4random_uniform(UInt32(count)))
+        return self[index]
+    }
+    /// Repeat the elements of the given array into a new array.
+    /// - Parameter count: Number of times array repeats (count must be greater than 0)
+    /// - Returns: New repeated array
+    func repeated(count: Int) -> Array<Element> {
+        assert(count > 0, "count must be greater than 0")
+        
+        var result = self
+        for _ in 0 ..< count - 1 {
+            result += self
+        }
+        
+        return result
+    }
 }
 
 public extension Array where Element: Equatable {

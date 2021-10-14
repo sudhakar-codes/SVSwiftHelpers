@@ -188,22 +188,12 @@ public extension String {
     ///   - color: string colour
     /// - Returns: atrribute string
     func colorSubString(_ subString: String, color: UIColor) -> NSMutableAttributedString {
-        var start = 0
-        var ranges: [NSRange] = []
-        while true {
-            let range = (self as NSString).range(of: subString, options: NSString.CompareOptions.literal, range: NSRange(location: start, length: (self as NSString).length - start))
-            if range.location == NSNotFound {
-                break
-            } else {
-                ranges.append(range)
-                start = range.location + range.length
-            }
-        }
-        let attrText = NSMutableAttributedString(string: self)
-        for range in ranges {
-            attrText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
-        }
-        return attrText
+        
+        let range: NSRange? = ("\(self) \(subString)" as NSString).range(of: subString)
+        let string = NSMutableAttributedString(string:"\(self) \(subString)")
+        string.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range ?? NSRange())
+        
+        return string
     }
     
     ///  URL encode a string (percent encoding special chars)
