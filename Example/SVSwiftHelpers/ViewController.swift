@@ -11,6 +11,8 @@ import SVSwiftHelpers
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var button: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,8 +33,21 @@ class ViewController: UIViewController {
         /// Alert
         showAlert("Title","Alert message", "OK")
         
-        /// Alert style can be alert or actionSheet
+        /// Alert style can be alert or actionSheet for iPhone
         showAlertMoreThanOneButton("Title", "message", style: .actionSheet, actions:
+                                    action("OK", preferredStyle: .default, action: { (action) in
+                                        print("Cicked OK")
+                                    }),
+                                   action("Cancel", preferredStyle: .cancel, action: { (action) in
+                                    print("Cicked Cancel")
+                                   }),
+                                   action("Delete", preferredStyle: .destructive, action: { (action) in
+                                    print("Cicked delete")
+                                   })
+        )
+        
+        /// Alert style can be alert or actionSheet for ipad
+        showAlertMoreThanOneButton("Title", "message", style: .actionSheet, sender:button ,actions:
                                     action("OK", preferredStyle: .default, action: { (action) in
                                         print("Cicked OK")
                                     }),

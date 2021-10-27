@@ -21,10 +21,15 @@ public extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
     /// Shows Alert/Action sheet with multiple buttons
-    func showAlertMoreThanOneButton(_ title: String?, _ message: String?, style:UIAlertController.Style, actions:UIAlertAction...){
+    /// - Warning: If App deployment target is universal, send value in `sender` parameter else action sheet will show in center of screen
+    func showAlertMoreThanOneButton(_ title: String?, _ message: String?, style:UIAlertController.Style, sender:UIView? = nil, actions:UIAlertAction...){
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions{
             alert.addAction(action)
+        }
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = sender == nil ? CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0) : sender!.frame
         }
         present(alert, animated: true, completion: nil)
     }
@@ -40,9 +45,6 @@ public extension UIViewController {
     var leftBarButton:UIBarButtonItem {
         let barButton = UIBarButtonItem(image: UIImage(named: "round_arrow_back_ios_white_24pt", in: Bundle(identifier: "org.cocoapods.SVSwiftHelpers"), compatibleWith: nil)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(leftBarButtonAction))
         return barButton
-    }
-    @objc func leftBarButtonAction() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - VC Container
@@ -222,4 +224,11 @@ public extension UIViewController {
         self.present(vc, animated: true)
     }
     
+}
+
+extension UIViewController {
+    
+    @objc open func leftBarButtonAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
