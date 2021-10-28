@@ -30,28 +30,35 @@ public extension UITextField {
     }
     
     /// Add a image icon on the left side of the textfield
-    func addLeftIcon(_ image: UIImage?, frame: CGRect, imageSize: CGSize) {
+    func addLeftIcon(_ image: UIImage?, frame: CGRect, imageSize: CGSize, imageTintColour:UIColor? = nil) {
         
         let leftView    = UIView()
         leftView.frame  = frame
-        let imgView     = UIImageView()
-        imgView.frame   = CGRect(x: frame.width - 8 - imageSize.width, y: (frame.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
-        imgView.image   = image
-        leftView.addSubview(imgView)
+        let imageView     = UIImageView()
+        imageView.frame   = CGRect(x: frame.width - 8 - imageSize.width, y: (frame.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
+        imageView.image   = image
+        if let colour = imageTintColour {
+            imageView.image = imageView.changeImageColor(color: colour)
+        }
+        leftView.addSubview(imageView)
         
         self.leftView   = leftView
         self.leftViewMode = UITextField.ViewMode.always
     }
     
     /// Add a image icon on the right side of the textfield
-    func addRightIcon(_ image: UIImage?, frame: CGRect, imageSize: CGSize) {
+    func addRightIcon(_ image: UIImage?, frame: CGRect, imageSize: CGSize,imageTintColour:UIColor? = nil) {
         
         let rightView    = UIView()
         rightView.frame  = frame
-        let imgView     = UIImageView()
-        imgView.frame   = CGRect(x: frame.width - 8 - imageSize.width, y: (frame.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
-        imgView.image   = image
-        rightView.addSubview(imgView)
+        let imageView    = UIImageView()
+        imageView.frame  = CGRect(x: frame.width - 8 - imageSize.width, y: (frame.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
+        imageView.image  = image
+        if let colour = imageTintColour {
+            imageView.image = imageView.changeImageColor(color: colour)
+        }
+        
+        rightView.addSubview(imageView)
         
         self.rightView  = rightView
         self.rightViewMode = UITextField.ViewMode.always
