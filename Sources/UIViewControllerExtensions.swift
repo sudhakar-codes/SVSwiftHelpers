@@ -228,6 +228,7 @@ public extension UIViewController {
 
 extension UIViewController {
     
+    /// Pop backs view controller. Can be override.
     @objc open func leftBarButtonAction() {
         self.navigationController?.popViewController(animated: true)
     }

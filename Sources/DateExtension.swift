@@ -267,6 +267,17 @@ public extension Date {
         return Calendar.current.component(Calendar.Component.month, from: self)
     }
     
+    /// Get the week from the date
+    var week: Int {
+        return Calendar.current.component(Calendar.Component.weekday, from: self)
+    }
+    
+    /// Get the weekOfMonth from the date
+    var weekOfMonth: Int {
+        return Calendar.current.component(Calendar.Component.weekOfMonth, from: self)
+    }
+
+    
     /// Get the day from the date
     var day: Int {
         return Calendar.current.component(.day, from: self)
