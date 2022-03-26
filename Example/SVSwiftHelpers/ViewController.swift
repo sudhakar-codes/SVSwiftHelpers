@@ -16,9 +16,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        IntExtensionExample()
     }
     
-    //MARK:- Colour
+    // MARK: - Colour
     func colorExtensionExample() {
         
         print(UIColor(r:255, g:255, b:255, a:255))
@@ -27,7 +28,7 @@ class ViewController: UIViewController {
         navigationBarColor = .randomColour
     }
     
-    //MARK:- ViewController
+    // MARK: - ViewController
     func viewControllerExtensionExample() {
         
         /// Alert
@@ -91,7 +92,7 @@ class ViewController: UIViewController {
         openSFSafariVC(WithURL: "http://www.google.com", barTint: .green)
     }
     
-    //MARK:- Array
+    // MARK: - Array
     func arrayExtensionExample() {
         
         let array = [1,2,3]
@@ -103,7 +104,7 @@ class ViewController: UIViewController {
         
     }
     
-    //MARK:- String
+    // MARK: - String
     func stringExtensionExample()  {
         
         print("sudhakar".base64)
@@ -133,7 +134,7 @@ class ViewController: UIViewController {
         
     }
     
-    //MARK:- Date
+    // MARK: - Date
     func dateExtensionExample() {
         
         let stringToDate = Date(fromString: "10-11-2020")
@@ -192,7 +193,7 @@ class ViewController: UIViewController {
         
     }
     
-    //MARK:- App
+    // MARK: - App
     func appHelperExample()  {
         
         /// Get all your app details
@@ -203,7 +204,7 @@ class ViewController: UIViewController {
         print(App.systemVersion ?? "")
     }
     
-    //MARK:- UIView
+    // MARK: - UIView
     func viewExtensionExample()  {
         
         let sampleView = UIView(x: 1, y: 1, w: 1, h: 1)
@@ -224,7 +225,7 @@ class ViewController: UIViewController {
         
     }
     
-    //MARK:- UserDefaults
+    // MARK: - UserDefaults
     func userdefaultsExtensionExample() {
         
         //setter
@@ -244,7 +245,7 @@ class ViewController: UIViewController {
         
     }
     
-    //MARK:- UITextField
+    // MARK: - UITextField
     
     func textFieldExtensionExample()  {
         
@@ -260,7 +261,7 @@ class ViewController: UIViewController {
         
     }
     
-    //MARK:- UILabel
+    // MARK: - UILabel
     func labelExtensionExample() {
         
         let label = UILabel(x: 0, y: 0, w: 100, h: 200)
@@ -268,7 +269,7 @@ class ViewController: UIViewController {
         label.set(image: UIImage(named: "image")!, with: "Hello world")
     }
     
-    //MARK:- UIImageView
+    // MARK: - UIImageView
     func imageViewExtensionExample() {
         
         let imageView = UIImageView(x: 0, y: 0, w: 120, h: 100)
@@ -276,7 +277,7 @@ class ViewController: UIViewController {
         imageView.image = imageView.changeImageColor(color: .red)
     }
     
-    //MARK:- UIFont
+    // MARK: - UIFont
     
     func fontExtensionExample() {
         
@@ -285,6 +286,19 @@ class ViewController: UIViewController {
         
         let customFont = UIFont.customFont(name: "fontname", type: .Light, size: 12)
         print(customFont)
+    }
+    
+    // MARK: - Int
+    
+    func IntExtensionExample() {
+        
+        print(0.ordinal)
+        print(1.ordinal)
+        print(2.ordinal)
+        print(3.ordinal)
+        print(4.ordinal)
+        print(5.ordinal)
+        
     }
     
 }
