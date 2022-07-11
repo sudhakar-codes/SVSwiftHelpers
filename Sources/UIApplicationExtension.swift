@@ -25,4 +25,13 @@ public extension UIApplication {
         }
         return base
     }
+    
+    var orientation: UIInterfaceOrientation? {
+        
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
+        }else {
+            return UIApplication.shared.statusBarOrientation
+        }
+    }
 }

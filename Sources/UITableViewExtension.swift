@@ -10,7 +10,7 @@ import Foundation
 public extension UITableView {
     
     
-    /// Adds Label with text in center of table view
+    /// Adds Label with text in centre of table view
     /// - Parameters:
     ///   - message: shows in empty tableview
     ///   - textColour: default color `lightGray`, can be overridden.

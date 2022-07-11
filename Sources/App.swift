@@ -9,7 +9,7 @@ import Foundation
 
 /**
  Contains values about the currently running application. This struct should not
- need to be initialized directly.
+ need to be initialised directly.
 */
 public struct App {
     

@@ -10,7 +10,7 @@ import SafariServices
 
 public extension UIViewController {
     
-    //MARK:- Alert
+    //MARK: - Alert
 
     /// Show alert
     func showAlert(_ title: String?, _ message:String?,_ buttonTitle:String){
@@ -167,7 +167,7 @@ public extension UIViewController {
         dismiss(animated: true, completion: completion)
     }
 
-    //MARK:-  UIActivityIndicatorView
+    //MARK: -  UIActivityIndicatorView
     
      ///Property used to identify the activity indicator. Default value is `999999` but this can be overridden.
     var activityIndicatorTag: Int { return 999999 }
@@ -211,9 +211,9 @@ public extension UIViewController {
         })
     }
     
-    //MARK:- Safari
+    //MARK: - Safari
     
-    /// Opens Internal safari brower
+    /// Opens Internal safari browser
     func openSFSafariVC(WithURL url:String?, barTint colour:UIColor = .black) {
         
         let config = SFSafariViewController.Configuration()

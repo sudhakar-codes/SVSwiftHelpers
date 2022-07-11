@@ -82,7 +82,7 @@ public extension String {
         
         return urls
     }
-    /// split string using a spearator string, returns an array of string
+    /// split string using a separator string, returns an array of string
     func split(_ separator: String) -> [String] {
         return self.components(separatedBy: separator).filter {
             !$0.trim.isEmpty
@@ -138,7 +138,19 @@ public extension String {
         return nil
     }
     
-    ///Returns the first index of the occurency of the character in String
+    /// Converts String to Date
+    /// - Parameter format: default date format is `"yyyy-MM-dd"`, Can override
+    /// - Returns: date
+    func toDate(withFormat format: String = "yyyy-MM-dd") -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        guard let date = dateFormatter.date(from: self) else {
+            return nil
+        }
+        return date
+    }
+    
+    ///Returns the first index of the occurrence of the character in String
     func getIndexOf(_ char: Character) -> Int? {
         for (index, c) in self.enumerated() where c == char {
             return index
@@ -176,24 +188,24 @@ public extension String {
         return ceil((self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrib, context: nil).height)
     }
             
-    /// Returns colored NSAttributedString
+    /// Returns coloured NSAttributedString
     func color(_ color: UIColor) -> NSAttributedString {
         let colorString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.foregroundColor: color])
         return colorString
     }
     
-    /// Returns NSAttributedString
+    /// Returns NSAttributedString.
+    ///
+    ///  String should be included with substring and pass subString in func parameter.
     /// - Parameters:
-    ///   - subString: String to be colored
+    ///   - subString: String to be coloured
     ///   - color: string colour
-    /// - Returns: atrribute string
-    func colorSubString(_ subString: String, color: UIColor) -> NSMutableAttributedString {
-        
-        let range: NSRange? = ("\(self) \(subString)" as NSString).range(of: subString)
-        let string = NSMutableAttributedString(string:"\(self) \(subString)")
-        string.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range ?? NSRange())
-        
-        return string
+    /// - Returns: attribute string
+    func setColor(_ color: UIColor, ofSubstring subString: String) -> NSMutableAttributedString {
+        let range = (self as NSString).range(of: subString)
+        let attributedString = NSMutableAttributedString(string: self)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        return attributedString
     }
     
     ///  URL encode a string (percent encoding special chars)

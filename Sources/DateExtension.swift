@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// This Date Formatter Manager help to cache already created formatter in a synchronized Dictionary to use them in future, helps in performace improvement.
+/// This Date Formatter Manager help to cache already created formatter in a synchronized Dictionary to use them in future, helps in performance improvement.
 class DateFormattersManager {
     public static var dateFormatters: SynchronizedDictionary = SynchronizedDictionary<String, DateFormatter>()
 }
@@ -86,7 +86,7 @@ public extension Date {
         return dateFormatter.string(from: self)
     }
     
-    /// Use to get dateFormatter from synchronized Dict via dateFormatterManager
+    /// Use to get dateFormatter from synchronised Dict via dateFormatterManager
     private func getDateFormatter(for format: String) -> DateFormatter {
         
         var dateFormatter: DateFormatter?

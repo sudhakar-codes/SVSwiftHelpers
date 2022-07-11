@@ -10,7 +10,7 @@ import Foundation
 public extension UICollectionView {
     
     
-    /// Adds Label with text in center of table view
+    /// Adds Label with text in centre of table view
     /// - Parameters:
     ///   - message: shows in empty tableview
     ///   - textColour: default color `lightGray`, can be overridden.
@@ -25,5 +25,21 @@ public extension UICollectionView {
         messageLabel.sizeToFit()
         
         self.backgroundView = messageLabel
+    }
+    
+    /// Add empty collection view cell.
+    /// - Parameters:
+    ///   - collectionView:
+    ///   - indexPath: at indexPath
+    ///   - reuseIdentifier: default identifier is "default", Can override
+    /// - Returns: UICollectionViewCell
+    func emptyCollectionViewCell(at indexPath:IndexPath, reuseIdentifier:String = "default") -> UICollectionViewCell {
+        return self.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    }
+    
+    /// Register collection view cell to class
+    /// - Parameter reuseIdentifier: default identifier is "default", Can override
+    func registerEmptyCollectionViewCell(_ reuseIdentifier:String = "default") {
+        self.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 }

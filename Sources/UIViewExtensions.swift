@@ -163,7 +163,7 @@ public extension UIView {
         }
     }
     
-    /// Getter and setter for the X coordinate of the center of a view.
+    /// Getter and setter for the X coordinate of the centre of a view.
     var centerX: CGFloat {
         get {
             return self.center.x
@@ -172,7 +172,7 @@ public extension UIView {
         }
     }
     
-    /// Getter and setter for the Y coordinate for the center of a view.
+    /// Getter and setter for the Y coordinate for the centre of a view.
     var centerY: CGFloat {
         get {
             return self.center.y
@@ -235,7 +235,7 @@ public extension UIView {
         }
     }
     
-    /// Centers view in superview horizontally
+    /// Center's view in superview horizontally
     func centerXInSuperView() {
         guard let parentView = superview else {
             assertionFailure("EZSwiftExtensions Error: The view \(self) doesn't have a superview")
@@ -245,7 +245,7 @@ public extension UIView {
         self.x = parentView.w/2 - self.w/2
     }
     
-    /// Centers view in superview vertically
+    /// Center's view in superview vertically
     func centerYInSuperView() {
         guard let parentView = superview else {
             assertionFailure("EZSwiftExtensions Error: The view \(self) doesn't have a superview")
@@ -255,7 +255,7 @@ public extension UIView {
         self.y = parentView.h/2 - self.h/2
     }
     
-    /// Centers view in superview horizontally & vertically
+    /// Center's view in superview horizontally & vertically
     func centerInSuperView() {
         self.centerXInSuperView()
         self.centerYInSuperView()
