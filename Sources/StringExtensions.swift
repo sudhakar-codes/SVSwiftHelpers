@@ -200,11 +200,15 @@ public extension String {
     /// - Parameters:
     ///   - subString: String to be coloured
     ///   - color: string colour
+    ///   - font: default is nil
     /// - Returns: attribute string
-    func setColor(_ color: UIColor, ofSubstring subString: String) -> NSMutableAttributedString {
+    func setColor(_ color: UIColor, ofSubstring subString: String, font:UIFont? = nil) -> NSMutableAttributedString {
         let range = (self as NSString).range(of: subString)
         let attributedString = NSMutableAttributedString(string: self)
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        if let font = font {
+            attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+        }
         return attributedString
     }
     
@@ -215,6 +219,17 @@ public extension String {
     /// Removes percent encoding from string
     var urlDecoded: String {
         return removingPercentEncoding ?? self
+    }
+    
+    /// Add space between each line of label
+    /// - Parameter spacingValue: default is 2, Can override
+    func addInterlineSpacing(spacingValue: CGFloat = 2) -> NSAttributedString {
+        
+        let attributedString = NSMutableAttributedString(string: self)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = spacingValue
+        attributedString.addAttribute(.paragraphStyle,value: paragraphStyle,range: NSRange(location: 0, length: attributedString.length ))
+        return attributedString
     }
     
 }

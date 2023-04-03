@@ -30,9 +30,10 @@ public extension UserDefaults {
 
     /// Archive object to NSData to save.
     func archive(object: Any?, forKey key: String) {
+        
         if let value = object {
-            
-            setter(key: key, value: NSKeyedArchiver.archivedData(withRootObject: value) as Any?)
+            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: false) else { return }
+            setter(key: key, value: data as Any?)
         } else {
             removeObject(forKey: key)
         }
@@ -40,6 +41,12 @@ public extension UserDefaults {
     
     /// Unarchive object for specific key.
     func unarchivedObject(forKey key: String) -> Any? {
-        return data(forKey: key).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) as Any }
+        
+        if let data = data(forKey: key) {
+            guard let data = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSObject.self], from: data) else { return nil }
+            return data
+        } else {
+            return nil
+        }
     }
 }

@@ -218,7 +218,7 @@ public extension UIViewController {
         
         let config = SFSafariViewController.Configuration()
         config.entersReaderIfAvailable = true
-        let vc = SFSafariViewController(url: NSURL(string: url ?? "")! as URL, configuration: config)
+        let vc = SFSafariViewController(url: URL(string: url ?? "") ?? URL(string: "https://www.google.co.in/")!, configuration: config)
         vc.preferredBarTintColor = colour
         vc.preferredControlTintColor = UIColor.white
         self.present(vc, animated: true)
