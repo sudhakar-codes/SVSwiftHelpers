@@ -12,11 +12,25 @@ import SVSwiftHelpers
 class ViewController: UIViewController {
     
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    private lazy var imagePicker: ImagePicker = {
+        let imagePicker = ImagePicker()
+        imagePicker.delegate = self
+        return imagePicker
+    }()
+    
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        IntExtensionExample()
+    }
+    
+    @IBAction func buttonAction(_ sender: Any) {
+        
+        showOptionsToPickImage()
     }
     
     // MARK: - Colour
@@ -37,26 +51,26 @@ class ViewController: UIViewController {
         /// Alert style can be alert or actionSheet for iPhone
         showAlertMoreThanOneButton("Title", "message", style: .actionSheet, actions:
                                     action("OK", preferredStyle: .default, action: { (action) in
-                                        print("Cicked OK")
+                                        print("Clicked OK")
                                     }),
                                    action("Cancel", preferredStyle: .cancel, action: { (action) in
-                                    print("Cicked Cancel")
+                                    print("Clicked Cancel")
                                    }),
                                    action("Delete", preferredStyle: .destructive, action: { (action) in
-                                    print("Cicked delete")
+                                    print("Clicked delete")
                                    })
         )
         
         /// Alert style can be alert or actionSheet for ipad
         showAlertMoreThanOneButton("Title", "message", style: .actionSheet, sender:button ,actions:
                                     action("OK", preferredStyle: .default, action: { (action) in
-                                        print("Cicked OK")
+                                        print("Clicked OK")
                                     }),
                                    action("Cancel", preferredStyle: .cancel, action: { (action) in
-                                    print("Cicked Cancel")
+                                    print("Clicked Cancel")
                                    }),
                                    action("Delete", preferredStyle: .destructive, action: { (action) in
-                                    print("Cicked delete")
+                                    print("Clicked delete")
                                    })
         )
         
@@ -129,7 +143,7 @@ class ViewController: UIViewController {
         print("sudhakar".underline)
         print("sudhakar".height(view.frame.size.width, font: .systemFont(ofSize: 14), lineBreakMode: .byWordWrapping))
         print("sudhakar".color(.red))
-        print("sudhakar Dasari".colorSubString("Dasari", color: .blue))
+        print("sudhakar Dasari".setColor(.blue, ofSubstring: "Dasari"))
         print("http://www.google.com ".urlEncoded)
         
     }
@@ -239,7 +253,7 @@ class ViewController: UIViewController {
             print("value exits")
         }
         
-        UserDefaults.standard.archive(object: [:], forKey: "data")
+        UserDefaults.standard.archive(object: ["Name":"Sudhakar"], forKey: "data")
         
         print(UserDefaults.standard.unarchivedObject(forKey: "data") as? [String:Any] ?? [:])
         
@@ -303,3 +317,68 @@ class ViewController: UIViewController {
     
 }
 
+// MARK: - Review request
+
+extension ViewController {
+    
+    func showAppReviewAlert()  {
+        
+        let review = ReviewRequest.shared
+        review.incrementAppRuns()
+        
+        review.minimumRunCount = 4
+        review.showReview()
+        
+    }
+}
+
+// MARK: - PermissionHandler
+
+extension ViewController {
+    
+    func checkCameraPermission() {
+        
+        PermissionHandler.shared.cameraAccessRequest { status in
+            
+            print("Has camera permission")
+        }
+    }
+    
+    func checkGalleryPermission() {
+        
+        PermissionHandler.shared.photoGalleryAccessRequest { status in
+            
+            print("Has gallery permission")
+        }
+    }
+}
+
+// MARK: - PermissionHandler
+
+extension ViewController: ImagePickerDelegate {
+    
+    func showOptionsToPickImage() {
+        
+        self.showAlertMoreThanOneButton("Choose image","select image from..", style: .actionSheet, actions:
+          self.action("Camera", preferredStyle: .default, action: { [self] (_) in imagePicker.cameraAccessRequest() }),
+          self.action("Gallery", preferredStyle: .default, action: { [self] (_) in imagePicker.photoGalleryAccessRequest() }),
+          action("Cancel", preferredStyle: .cancel, action: { (_) in })
+        )
+    }
+    
+    func imagePicker(_ imagePicker: SVSwiftHelpers.ImagePicker, grantedAccess: Bool, to sourceType: UIImagePickerController.SourceType) {
+        guard grantedAccess else { return }
+        imagePicker.present(parent: self, sourceType: sourceType)
+    }
+    
+    func imagePicker(_ imagePicker: SVSwiftHelpers.ImagePicker, didSelect image: UIImage) {
+        
+        self.imageView.image = image
+        imagePicker.dismiss(completion: nil)
+    }
+    
+    func cancelButtonDidClick(on imageView: SVSwiftHelpers.ImagePicker) {
+        imagePicker.dismiss()
+    }
+    
+}

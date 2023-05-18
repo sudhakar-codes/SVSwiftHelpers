@@ -133,17 +133,17 @@ public extension UIViewController {
     // MARK: - VC Flow
     
     /// Pushes a view controller onto the receiver’s stack and updates the display.
-    func pushVC(_ vc: UIViewController) {
-        navigationController?.pushViewController(vc, animated: true)
+    func pushVC(_ vc: UIViewController, animated: Bool = true) {
+        navigationController?.pushViewController(vc, animated: animated)
     }
     
     /// Pops the top view controller from the navigation stack and updates the display.
-    func popVC() {
-        _ = navigationController?.popViewController(animated: true)
+    func popVC(animated: Bool = true) {
+        _ = navigationController?.popViewController(animated: animated)
     }
 
     /// Hide or show navigation bar
-    var isNavBarHidden: Bool {
+    var isNavBarHidden:Bool {
         get {
             return (navigationController?.isNavigationBarHidden)!
         }
@@ -153,18 +153,18 @@ public extension UIViewController {
     }
     
     /// Added extension for popToRootViewController
-    func popToRootVC() {
-        _ = navigationController?.popToRootViewController(animated: true)
+    func popToRootVC(animated:Bool = true) {
+        _ = navigationController?.popToRootViewController(animated: animated)
     }
     
     /// Presents a view controller modally.
-    func presentVC(_ vc: UIViewController) {
-        present(vc, animated: true, completion: nil)
+    func presentVC(_ vc: UIViewController, animated:Bool = true) {
+        present(vc, animated: animated, completion: nil)
     }
     
     /// Dismisses the view controller that was presented modally by the view controller.
-    func dismissVC(completion: (() -> Void)? ) {
-        dismiss(animated: true, completion: completion)
+    func dismissVC(animated flag: Bool = true, completion: (() -> Void)? ) {
+        dismiss(animated: flag, completion: completion)
     }
 
     //MARK: -  UIActivityIndicatorView
