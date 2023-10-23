@@ -11,7 +11,7 @@ import Photos
 
 public protocol ImagePickerDelegate: AnyObject {
     func imagePicker(_ imagePicker: ImagePicker, grantedAccess: Bool, to sourceType: UIImagePickerController.SourceType)
-    func imagePicker(_ imagePicker: ImagePicker, didSelect image: UIImage)
+    func imagePicker(_ imagePicker: ImagePicker, didSelect image: UIImage, assetInfo:[UIImagePickerController.InfoKey : Any])
     func cancelButtonDidClick(on imageView: ImagePicker)
 }
 
@@ -127,12 +127,12 @@ extension ImagePicker: UIImagePickerControllerDelegate {
     public func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
-            delegate?.imagePicker(self, didSelect: image)
+            delegate?.imagePicker(self, didSelect: image, assetInfo: info)
             return
         }
         
         if let image = info[.originalImage] as? UIImage {
-            delegate?.imagePicker(self, didSelect: image)
+            delegate?.imagePicker(self, didSelect: image, assetInfo: info)
         } else {
             print("Other source")
         }

@@ -341,4 +341,18 @@ public extension Date {
         dateComponents.day = day
         return calendar.date(from: dateComponents) ?? nil
     }
+    
+    /// Checks if the specified number of minutes has passed since the current date.
+    /// - Parameter minutes: The number of minutes to compare against.
+    /// - Returns: `true` if the specified number of minutes has passed since the current date; otherwise, `false`.
+    func hasCrossedMinutes(_ minutes: Int) -> Bool {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        if let minutesDifference = calendar.dateComponents([.minute], from: self, to: now).minute {
+            return minutesDifference >= minutes
+        }
+        
+        return false
+    }
 }

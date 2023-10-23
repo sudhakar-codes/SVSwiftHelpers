@@ -40,6 +40,35 @@ public extension Array {
         
         return result
     }
+    
+    /**
+     Returns an array containing the elements at the specified indexes from the array.
+     
+     This function takes an array and an array of indexes and returns a new array containing the elements from the array at the specified indexes. The function filters out any invalid indexes (i.e., indexes that are out of bounds) and includes only the elements corresponding to the valid indexes.
+     
+     - Parameters:
+     - indexes: An array of integers representing the indexes of elements to be retrieved from the array.
+     
+     - Returns: An array containing the elements from the array at the specified indexes. The order of elements in the output array corresponds to the order of indexes in the `indexes` array.
+     
+     - Complexity: The time complexity of this function is O(m), where m is the count of valid indexes in the `indexes` array. The function iterates through the `indexes` array to filter out invalid indexes and creates a new array with the desired elements. The space complexity of the function is also O(m), as it returns a new array containing the valid elements.
+     
+     - Note: If the array is empty or the `indexes` array is empty, the function will return an empty array as well.
+     
+     - Example:
+     ```swift
+     let stringArray = ["Apple", "Banana", "Orange", "Grape", "Mango"]
+     let indexes = [0, 2, 4]
+     
+     let elements = stringArray.elements(atIndexes: indexes)
+     // elements is ["Apple", "Orange", "Mango"]
+     ```
+     */
+    func elements(atIndexes indexes: [Int]) -> [Element] {
+        return indexes.compactMap { index in
+            index < count ? self[index] : nil
+        }
+    }
 }
 
 public extension Array where Element: Equatable {
