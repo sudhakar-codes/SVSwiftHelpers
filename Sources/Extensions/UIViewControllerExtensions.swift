@@ -27,15 +27,21 @@ public extension UIViewController {
         for action in actions{
             alert.addAction(action)
         }
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = sender == nil ? CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0) : sender!.frame
+        // Check if running on iPad and sender is provided
+        if let popoverController = alert.popoverPresentationController, let sender = sender {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+            popoverController.permittedArrowDirections = [.down, .up] // Adjust as needed
+        } else {
+            // Fallback to center of screen for universal apps without sender
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
         }
         present(alert, animated: true, completion: nil)
     }
-    /// Adds actions to alert/action sheet
-    func action(_ title: String, preferredStyle:UIAlertAction.Style, action:@escaping (_ alertAction: UIAlertAction) -> Void) -> UIAlertAction{
-        let btnAction = UIAlertAction(title: title, style:preferredStyle, handler:action)
+    func action(_ title: String, preferredStyle: UIAlertAction.Style, textColor: UIColor = .black, action: @escaping (_ alertAction: UIAlertAction) -> Void) -> UIAlertAction {
+        let btnAction = UIAlertAction(title: title, style: preferredStyle, handler: action)
+        btnAction.setValue(textColor, forKey: "titleTextColor")
         return btnAction
     }
     

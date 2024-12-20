@@ -46,22 +46,55 @@ public extension UITextField {
         self.leftViewMode = UITextField.ViewMode.always
     }
     
-    /// Add a image icon on the right side of the textfield
-    func addRightIcon(_ image: UIImage?, frame: CGRect, imageSize: CGSize,imageTintColour:UIColor? = nil) {
+    /**
+     Adds an icon to the right side of the UITextField with customizable properties.
+     
+     - Parameters:
+     - image: The UIImage to be used as the icon on the right side of the text field. Pass `nil` if no image is required.
+     - frame: The CGRect defining the size and position of the right view container. This determines the overall space occupied by the right icon and its padding within the text field.
+     - imageSize: The CGSize specifying the width and height of the icon image within the right view.
+     - imageTintColour: An optional UIColor to tint the icon image. If `nil`, the image's original colors are used.
+     - showKeyboardOnTap: A Boolean value indicating whether the keyboard should appear when the right icon is tapped. If `true`, the keyboard will show; if `false`, no keyboard will appear, and custom actions can be triggered instead. The default value is `true`.
+     
+     - Discussion:
+     This method adds a UIButton to the right side of the text field, which can display an icon image. The button can either trigger the keyboard or perform a custom action when tapped, depending on the `showKeyboardOnTap` parameter. This is useful in scenarios where some text fields require immediate keyboard input while others do not.
+     
+     - Example:
+     ```
+     // Add an icon to a text field and show the keyboard when tapped
+     textField.addRightIcon(dropDownArrow, frame: CGRect(x: 0, y: 0, width: 40, height: 40), imageSize: CGSize(width: 24, height: 24), imageTintColour: UIColor.blue, showKeyboardOnTap: true)
+     
+     // Add an icon to a text field without showing the keyboard when tapped
+     otherTextField.addRightIcon(dropDownArrow, frame: CGRect(x: 0, y: 0, width: 40, height: 40), imageSize: CGSize(width: 24, height: 24), imageTintColour: UIColor.blue, showKeyboardOnTap: false)
+     ```
+     */
+    func addRightIcon(_ image: UIImage?, frame: CGRect, imageSize: CGSize, imageTintColour: UIColor? = nil, showKeyboardOnTap: Bool = true) {
+        let rightView = UIView(frame: frame)
         
-        let rightView    = UIView()
-        rightView.frame  = frame
-        let imageView    = UIImageView()
-        imageView.frame  = CGRect(x: frame.width - 8 - imageSize.width, y: (frame.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
-        imageView.image  = image
-        if let colour = imageTintColour {
-            imageView.image = imageView.changeImageColor(color: colour)
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: frame.width - 8 - imageSize.width, y: (frame.height - imageSize.height) / 2, width: imageSize.width, height: imageSize.height)
+        
+        if let image = image {
+            if let colour = imageTintColour {
+                let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                button.setImage(tintedImage, for: .normal)
+                button.tintColor = colour
+            } else {
+                button.setImage(image, for: .normal)
+            }
         }
         
-        rightView.addSubview(imageView)
+        rightView.addSubview(button)
+        self.rightView = rightView
+        self.rightViewMode = .always
         
-        self.rightView  = rightView
-        self.rightViewMode = UITextField.ViewMode.always
+        if showKeyboardOnTap {
+            button.addTarget(self, action: #selector(showKeyboard), for: .touchUpInside)
+        }
+    }
+    
+    @objc private func showKeyboard() {
+        self.becomeFirstResponder()
     }
     
     /// Password toggle
