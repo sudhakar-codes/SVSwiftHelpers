@@ -80,6 +80,7 @@
 		7224C46E261F57920055B6B3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		7224C475261F624D0055B6B3 /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
 		7246EB092629A1E200003B5F /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
+		726DA2F52D157BE50082835F /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		72781BFD2644175E00312BF0 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		72781BFF2644193D00312BF0 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		72781C012644232D00312BF0 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
@@ -312,6 +313,7 @@
 				A34A5667F00C238497EE6CE6843B4B0B /* LICENSE */,
 				0ACCF0E8A8483604B4C0951CE34057B8 /* README.md */,
 				6D311C096E45E273ADF732B4A35571FD /* SVSwiftHelpers.podspec */,
+				726DA2F52D157BE50082835F /* Package.swift */,
 			);
 			name = Pod;
 			sourceTree = "<group>";
