@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SVSwiftHelpers",
     platforms: [
-        .iOS(.v12) // Minimum supported platform
+        .iOS(.v14) // Minimum supported platform
     ],
     products: [
         .library(

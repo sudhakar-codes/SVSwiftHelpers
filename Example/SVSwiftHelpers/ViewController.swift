@@ -20,6 +20,13 @@ class ViewController: UIViewController {
         return imagePicker
     }()
     
+    private lazy var phPicker: ImagePickerHelper = {
+        let imagePicker = ImagePickerHelper()
+        imagePicker.delegate = self
+        return imagePicker
+    }()
+    var selectedImages: [(image: UIImage, metadata: ImageMetadata)] = []
+    var selectedVideos: [(videoURL: URL, metadata: ImageMetadata)] = []
     
     // MARK: -
     
@@ -30,7 +37,8 @@ class ViewController: UIViewController {
     
     @IBAction func buttonAction(_ sender: Any) {
         
-        showOptionsToPickImage()
+        //showOptionsToPickImage()
+        showOptionsToPickImageFromPHPicker()
     }
     
     // MARK: - Colour
@@ -353,9 +361,14 @@ extension ViewController {
     }
 }
 
-// MARK: - PermissionHandler
+// MARK: - PermissionHandler(camera and single image selection using UIImagePickerController)
 
 extension ViewController: ImagePickerDelegate {
+    
+    func imagePicker(_ imagePicker: SVSwiftHelpers.ImagePicker, didSelect image: UIImage, assetInfo: [UIImagePickerController.InfoKey : Any]) {
+        self.imageView.image = image
+        imagePicker.dismiss(completion: nil)
+    }
     
     func showOptionsToPickImage() {
         
@@ -370,15 +383,87 @@ extension ViewController: ImagePickerDelegate {
         guard grantedAccess else { return }
         imagePicker.present(parent: self, sourceType: sourceType)
     }
-    
-    func imagePicker(_ imagePicker: SVSwiftHelpers.ImagePicker, didSelect image: UIImage) {
-        
-        self.imageView.image = image
-        imagePicker.dismiss(completion: nil)
-    }
-    
+
     func cancelButtonDidClick(on imageView: SVSwiftHelpers.ImagePicker) {
         imagePicker.dismiss()
     }
+    
+}
+
+// MARK: - ImagePickerHelperDelegate(camera and multiple image selection using PHPickerViewController)
+
+extension ViewController: ImagePickerHelperDelegate {
+    
+    func showOptionsToPickImageFromPHPicker() {
+        
+        self.showAlertMoreThanOneButton("Choose image","select image from..", style: .actionSheet, actions:
+                                            self.action("Camera", preferredStyle: .default, action: { [self] (_) in
+            phPicker.mediaAccessRequest(for:.camera)
+        }),
+                                        self.action("Gallery", preferredStyle: .default, action: { [self] (_) in
+            phPicker.presentMediaPicker(from: self, selectionLimit: 5, filter: .any(of: [.images, .videos]))
+        }),
+                                        action("Cancel", preferredStyle: .cancel, action: { (_) in })
+        )
+    }
+    
+    func imagePicker(_ imagePicker: SVSwiftHelpers.ImagePickerHelper, grantedAccess: Bool, to sourceType: UIImagePickerController.SourceType) {
+        imagePicker.presentCamera(from: self,allowsEditing: true)
+    }
+    
+    func didSelectMedia(_ media: [(media: UIImage?, videoURL: URL?, metadata: ImageMetadata)]) {
+        
+        selectedImages.removeAll()
+        selectedVideos.removeAll()
+        for item in media {
+            if let image = item.media {
+                selectedImages.append((image, item.metadata))
+            }
+            if let videoURL = item.videoURL {
+                selectedVideos.append((videoURL, item.metadata))
+            }
+        }
+        
+        printMediaDetails()
+    }
+    
+    func printMediaDetails() {
+        
+        for item in selectedImages {
+            let image = item.image
+            let metadata = item.metadata
+            
+            print("Image: \(image)")
+            print("File Name: \(metadata.fileName ?? "Unknown")")
+            print("File Type: \(metadata.fileType ?? "Unknown")")
+            print("File Size: \(metadata.fileSize ?? 0) KB")
+            print("Media URL: \(metadata.mediaURL?.absoluteString ?? "N/A")")
+            print("Capture Date: \(metadata.captureDate ?? Date())")
+            print("Meta Data: \(metadata.metadata ?? [:])")
+            
+            if let location = metadata.location {
+                print("Location: Latitude - \(location.latitude), Longitude - \(location.longitude)")
+            }
+        }
+        
+        for item in selectedVideos {
+            let videoURL = item.videoURL
+            let metadata = item.metadata
+            
+            print("Video URL: \(videoURL)")
+            print("File Name: \(metadata.fileName ?? "Unknown")")
+            print("File Type: \(metadata.fileType ?? "Unknown")")
+            print("File Size: \(metadata.fileSize ?? 0) KB")
+            print("Capture Date: \(metadata.captureDate ?? Date())")
+            print("Meta Data: \(metadata.metadata ?? [:])")
+            print("video duration: \(metadata.duration ?? 0.0)")
+            
+            if let location = metadata.location {
+                print("Location: Latitude = \(location.latitude), Longitude = \(location.longitude)")
+            }
+        }
+
+    }
+
     
 }
