@@ -10,7 +10,7 @@ import Foundation
 public extension UIApplication {
     
     /// Get the top most view controller from the base view controller; default param is UIWindow's rootViewController
-    class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(_ base: UIViewController? = UIApplication.shared.activeWindow?.rootViewController) -> UIViewController? {
         
         if let nav = base as? UINavigationController {
             return topViewController(nav.visibleViewController)
@@ -26,11 +26,22 @@ public extension UIApplication {
         return base
     }
     
+    /// Computed property to get the active window
+    var activeWindow: UIWindow? {
+        if #available(iOS 15.0, *) {
+            return UIApplication.shared.connectedScenes
+                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                .first
+        } else {
+            return UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        }
+    }
+    
+    /// Get the current orientation of the app
     var orientation: UIInterfaceOrientation? {
-        
         if #available(iOS 13.0, *) {
-            return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
-        }else {
+            return activeWindow?.windowScene?.interfaceOrientation
+        } else {
             return UIApplication.shared.statusBarOrientation
         }
     }
