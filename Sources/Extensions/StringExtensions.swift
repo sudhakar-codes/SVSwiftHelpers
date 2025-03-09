@@ -21,10 +21,10 @@ public extension String {
         return self.count
     }
     
-    /// Returns if String is a Valid email
+    /// Returns true if the string is a valid email address
     var isValidEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailRegEx = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
     
@@ -36,11 +36,10 @@ public extension String {
         return  phoneTest.evaluate(with: self)
     }
     
-    /// Returns if String is a Valid URL
+    /// Returns true if the string is a valid URL with a proper scheme
     var isValidUrl: Bool {
-        let regEx  = "^(http[s]?://)?([www]\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
-        let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
-        return predicate.evaluate(with: self)
+        guard let url = URL(string: self) else { return false }
+        return ["http", "https"].contains(url.scheme)
     }
     
     /// Trims white space and new line characters, returns a new string
@@ -163,19 +162,19 @@ public extension String {
         let boldString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)])
         return boldString
     }
-        
+    
     /// Returns underlined NSAttributedString
     var underline:NSAttributedString {
         let underlineString = NSAttributedString(string: self, attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
         return underlineString
     }
-            
+    
     /// Returns italic NSAttributedString
     var italic:NSAttributedString {
         let italicString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)])
         return italicString
     }
-            
+    
     /// Returns hight of rendered string
     func height(_ width: CGFloat, font: UIFont, lineBreakMode: NSLineBreakMode?) -> CGFloat {
         var attrib: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
@@ -187,7 +186,7 @@ public extension String {
         let size = CGSize(width: width, height: CGFloat(Double.greatestFiniteMagnitude))
         return ceil((self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrib, context: nil).height)
     }
-            
+    
     /// Returns coloured NSAttributedString
     func color(_ color: UIColor) -> NSAttributedString {
         let colorString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.foregroundColor: color])

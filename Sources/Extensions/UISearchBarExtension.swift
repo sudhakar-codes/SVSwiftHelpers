@@ -80,7 +80,7 @@ public extension UISearchBar {
             let _searchIcon = searchIcon
             if newValue {
                 if activityIndicator == nil {
-                    let _activityIndicator = UIActivityIndicatorView(style: .gray)
+                    let _activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
                     _activityIndicator.startAnimating()
                     _activityIndicator.backgroundColor = UIColor.clear
                     let clearImage = UIImage().imageWithPixelSize(size: CGSize.init(width: 14, height: 14)) ?? UIImage()
