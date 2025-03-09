@@ -8,6 +8,7 @@
 import UIKit
 import PhotosUI
 import ImageIO
+import CoreLocation
 
 /// Protocol to handle selected media (images/videos) and their metadata
 public protocol ImagePickerHelperDelegate: AnyObject {
@@ -24,12 +25,12 @@ public struct ImageMetadata {
     public var fileSize: Int?      // Size of the file in bytes
     public var mediaURL: URL?      // URL of the media in the file system
     public var captureDate: Date? // Date and time when the media was captured
-    public var location: (latitude: Double, longitude: Double)? // GPS location data
+    public var location: CLLocation? // GPS location data
     public var metadata: [String: Any]? // Full metadata dictionary for additional details
-    public var assetInfo:[UIImagePickerController.InfoKey: Any]?
+    public var assetInfo:[UIImagePickerController.InfoKey: Any]? // Full metadata for additional details(only if image source is camera)
     public var duration: Double?   // Duration of video (only applicable for videos)
     
-    public init(fileName: String?, fileType: String?, fileSize: Int?, mediaURL: URL?, captureDate: Date?, location: (latitude: Double, longitude: Double)?, metadata: [String: Any]?, duration: Double?, assetInfo:[UIImagePickerController.InfoKey: Any]?) {
+    public init(fileName: String?, fileType: String?, fileSize: Int?, mediaURL: URL?, captureDate: Date?, location: CLLocation?, metadata: [String: Any]?, duration: Double?, assetInfo:[UIImagePickerController.InfoKey: Any]?) {
         self.fileName = fileName
         self.fileType = fileType
         self.fileSize = fileSize
@@ -164,7 +165,7 @@ extension ImagePickerHelper:UIImagePickerControllerDelegate, UINavigationControl
         if let asset = info[.phAsset] as? PHAsset {
             metadata.captureDate = asset.creationDate ?? Date()
             if let assetLocation = asset.location {
-                metadata.location = (latitude: assetLocation.coordinate.latitude, longitude: assetLocation.coordinate.longitude)
+                metadata.location = CLLocation(latitude: assetLocation.coordinate.latitude, longitude: assetLocation.coordinate.longitude)
             }
         }
         return metadata
@@ -274,7 +275,7 @@ extension ImagePickerHelper:PHPickerViewControllerDelegate {
                 if let gpsData = imageProperties[kCGImagePropertyGPSDictionary as String] as? [String: Any],
                    let lat = gpsData[kCGImagePropertyGPSLatitude as String] as? Double,
                    let long = gpsData[kCGImagePropertyGPSLongitude as String] as? Double {
-                    metadata.location = (latitude: lat,longitude: long)
+                    metadata.location = CLLocation(latitude: lat, longitude: long)
                 }
             }
             
@@ -292,7 +293,7 @@ extension ImagePickerHelper:PHPickerViewControllerDelegate {
                    let locationString = locationItem.value as? String {
                     let coordinates = locationString.split(separator: ",").compactMap { Double($0) }
                     if coordinates.count == 2 {
-                        metadata.location = (latitude: coordinates[0], longitude: coordinates[1])
+                        metadata.location = CLLocation(latitude: coordinates[0], longitude: coordinates[1])
                     }
                 }
             }
