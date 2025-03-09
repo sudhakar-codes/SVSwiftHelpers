@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SVSwiftHelpers'
-  s.version          = '1.1.16'
+  s.version          = '1.1.17'
   s.summary          = 'SVSwiftHelpers has collection of multiple extensions'
 
 # This description is used to generate tags and improve search results.
