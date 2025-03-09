@@ -21,12 +21,12 @@ Pod::Spec.new do |s|
 'SVSwiftHelpers has collection of multiple extensions and helpers. Just import and start using'
                        DESC
 
-  s.homepage         = 'https://github.com/sudhakar-varma/SVSwiftHelpers'
+  s.homepage         = 'https://github.com/sudhakar-codes/SVSwiftHelpers'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'sudhakar' => 'sudhakarvarma.ios@gmail.com' }
   s.source           = { :git => 'https://github.com/sudhakar-varma/SVSwiftHelpers.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/sudhakarVarmaD'
+  s.social_media_url = 'www.linkedin.com/in/sudhakar-codes'
 
   s.ios.deployment_target = '14.0'
 
