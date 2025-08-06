@@ -16,7 +16,11 @@ public struct App {
     /// Specifies whether the app is running within the iPhone
     /// simulator or not.
     public static var inSimulator: Bool {
-        return (TARGET_IPHONE_SIMULATOR != 0)
+        #if targetEnvironment(simulator)
+        return true
+        #else
+        return false
+        #endif
     }
 
     /**
@@ -86,9 +90,19 @@ public struct App {
         return Bundle.main.object(forInfoDictionaryKey: key) as? String
     }
     
-    /// Get the MAC Address of the currently running application
-    public static var macAddress: String? {
-        return UIDevice.current.identifierForVendor?.uuidString//NSUUID().uuidString
+    /// A unique identifier string for the device, specific to the app’s vendor.
+    ///
+    /// This uses `UIDevice.current.identifierForVendor?.uuidString` which:
+    /// - Is unique to the device and app vendor (i.e., all apps from the same developer).
+    /// - Persists across app launches.
+    /// - Resets when all apps from the same vendor are deleted and reinstalled.
+    ///
+    /// If `identifierForVendor` is not available (e.g., during early launch stages or rare edge cases),
+    /// this falls back to generating a new `UUID` string to ensure a non-nil identifier is always returned.
+    ///
+    /// - Returns: A non-optional unique identifier string for the device.
+    public static var deviceIdentifier: String {
+        return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
     }
     
     /// Get the systemVersion of the currently running application
