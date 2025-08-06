@@ -14,7 +14,7 @@ import CoreLocation
 public protocol ImagePickerHelperDelegate: AnyObject {
     /// Called when media is selected
     /// - Parameter media: Array of selected media along with their metadata
-    func didSelectMedia(_ media: [(media: UIImage?, videoURL: URL?, metadata: ImageMetadata)])
+    func didSelectMedia(_ media: [(image: UIImage?, videoURL: URL?, metadata: ImageMetadata)])
     func imagePicker(_ imagePicker: ImagePickerHelper, grantedAccess: Bool, to sourceType: UIImagePickerController.SourceType)
 }
 
@@ -131,21 +131,21 @@ extension ImagePickerHelper:UIImagePickerControllerDelegate, UINavigationControl
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         
-        var selectedMedia: [(media: UIImage?, videoURL: URL?, metadata: ImageMetadata)] = []
+        var selectedMedia: [(image: UIImage?, videoURL: URL?, metadata: ImageMetadata)] = []
         
         if let image = info[.editedImage] as? UIImage ?? info[.originalImage] as? UIImage,
            let fileURL = info[.imageURL] as? URL {
             
             let metadata = extractMetadata(from: fileURL, info: info)
             
-            selectedMedia.append((media: image, videoURL: nil, metadata: metadata))
+            selectedMedia.append((image: image, videoURL: nil, metadata: metadata))
             
         } else if let videoURL = info[.mediaURL] as? URL {
             
             var metadata = extractMetadata(from: videoURL, info: info)
             metadata.duration = CMTimeGetSeconds(AVAsset(url: videoURL).duration)
             
-            selectedMedia.append((media: nil, videoURL: videoURL, metadata: metadata))
+            selectedMedia.append((image: nil, videoURL: videoURL, metadata: metadata))
         }
         
         self.delegate?.didSelectMedia(selectedMedia)
@@ -203,7 +203,7 @@ extension ImagePickerHelper:PHPickerViewControllerDelegate {
     public func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true, completion: nil)
         
-        var selectedMedia: [(media: UIImage?, videoURL: URL?, metadata: ImageMetadata)] = []
+        var selectedMedia: [(image: UIImage?, videoURL: URL?, metadata: ImageMetadata)] = []
         let group = DispatchGroup()
         
         for result in results {
@@ -213,7 +213,7 @@ extension ImagePickerHelper:PHPickerViewControllerDelegate {
                 group.enter()
                 provider.loadObject(ofClass: UIImage.self) { (image, error) in
                     self.extractMetadata(from: provider, typeIdentifier: UTType.image.identifier) { metadata in
-                        selectedMedia.append((media: image as? UIImage, videoURL: nil, metadata: metadata))
+                        selectedMedia.append((image: image as? UIImage, videoURL: nil, metadata: metadata))
                         group.leave()
                     }
                 }
@@ -222,7 +222,7 @@ extension ImagePickerHelper:PHPickerViewControllerDelegate {
                 provider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { (url, error) in
                     if let videoURL = url {
                         self.extractMetadata(from: provider, typeIdentifier: UTType.movie.identifier) { metadata in
-                            selectedMedia.append((media: nil, videoURL: videoURL, metadata: metadata))
+                            selectedMedia.append((image: nil, videoURL: videoURL, metadata: metadata))
                             group.leave()
                         }
                     } else {
@@ -234,7 +234,7 @@ extension ImagePickerHelper:PHPickerViewControllerDelegate {
         
         /// Notify delegate once all media are processed
         group.notify(queue: .main) {
-            self.delegate?.didSelectMedia(selectedMedia)
+            selectedMedia.count == 0 ? nil : self.delegate?.didSelectMedia(selectedMedia)
         }
     }
     
