@@ -8,6 +8,7 @@
 
 import UIKit
 import SVSwiftHelpers
+import CoreLocation
 
 class ViewController: UIViewController {
     
@@ -219,7 +220,7 @@ class ViewController: UIViewController {
     func appHelperExample()  {
         
         /// Get all your app details
-        print(App.macAddress ?? "")
+        print(App.deviceIdentifier)
         print(App.name ?? "")
         print(App.version ?? "")
         print(App.formattedNameAndVersion ?? "")
@@ -411,12 +412,12 @@ extension ViewController: ImagePickerHelperDelegate {
         imagePicker.presentCamera(from: self,allowsEditing: true)
     }
     
-    func didSelectMedia(_ media: [(media: UIImage?, videoURL: URL?, metadata: ImageMetadata)]) {
+    func didSelectMedia(_ media: [(image: UIImage?, videoURL: URL?, metadata: ImageMetadata)]) {
         
         selectedImages.removeAll()
         selectedVideos.removeAll()
         for item in media {
-            if let image = item.media {
+            if let image = item.image {
                 selectedImages.append((image, item.metadata))
             }
             if let videoURL = item.videoURL {
@@ -442,7 +443,7 @@ extension ViewController: ImagePickerHelperDelegate {
             print("Meta Data: \(metadata.metadata ?? [:])")
             
             if let location = metadata.location {
-                print("Location: Latitude - \(location.latitude), Longitude - \(location.longitude)")
+                print("Location: Latitude - \(location.coordinate.latitude), Longitude - \(location.coordinate.longitude)")
             }
         }
         
@@ -459,7 +460,7 @@ extension ViewController: ImagePickerHelperDelegate {
             print("video duration: \(metadata.duration ?? 0.0)")
             
             if let location = metadata.location {
-                print("Location: Latitude = \(location.latitude), Longitude = \(location.longitude)")
+                print("Location: Latitude - \(location.coordinate.latitude), Longitude - \(location.coordinate.longitude)")
             }
         }
 
